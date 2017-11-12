@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link media="all" type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+    <title>Google Maps Multiple Markers</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/2-col-portfolio.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body style="background-color: #737373; color: #D4D4D4;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Crime Department</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+        <!-- Page Header -->
+        <div class="row " >
+            <div class="col-lg-12 rounded" >
+                <h1 class="page-header">Welcome to Crime prediction system
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 sidebar2">
+                <div class="logo text-center">
+                    <img src="http://www.feuerwehr-wremen.de/fileadmin/_processed_/csm_Michael_John_0eb88ac96d.jpg" class="img-responsive center-block" alt="Logo">
+                  <h4>User name</h4>
+                      <div>
+                    <button type="button" class="btn btn-default Add-friend">
+                        <i class="fa fa-rocket" aria-hidden="true"></i> User profile
+                      </div>
+
+                </div>
+                <br>
+
+                <div class="navbar-top">
+
+                    <ul class="list">
+
+                        <li><i class="fa fa-safari" aria-hidden="true"></i>Crime Activities</li>
+                        <li><i class="fa fa-thumbs-up" aria-hidden="true"></i>Crime Reports</li>
+                        <li><i class="fa fa-hand-o-right" aria-hidden="true"></i>Maps</li>
+                       <li><i class="fa fa-trophy" aria-hidden="true"></i>Crime History</li>
+                       <li><i class="fa fa-certificate" aria-hidden="true"></i>Officer Records</li>
+                       <li><i class="fa fa-users" aria-hidden="true"></i></i>Statistics</li>
+                        <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Logout</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-1 portfolio-item">
+                
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <h3>
+                    <a href="#">ACTUAL PLOT</a>
+                </h3>
+                <p>Here we preview the actual crime locations</p>
+            </div>
+            <div class="col-md-1 portfolio-item">
+                
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <h3>
+                    <a href="#">PREDICTED PLOT</a>
+                </h3>
+                <p>Here we preview the predicted crime locations</p>
+            </div>
+
+            <div class="col-md-1 portfolio-item">
+                
+            </div>
+
+            <div id="map" class="col-md-4 portfolio-item" style="height: 400px;">
+                <p>
+                <input type="number" class="form-control" id="s1" step="0.000000000000005" name="qq"/>Latitude<br>
+                <p>
+                <input type="number" class="form-control" id="s2" step="0.000000000000005" name="qqq"/>Longitude<br>
+                </p>
+                <p>
+                <input type="submit" class="btn btn-primary" value="SUBMIT" id="sub" onclick="mapskillz1(document.getElementById('s1').value,document.getElementById('s2').value)"/>
+                </p>
+
+            </div>
+            <div class="col-md-1 portfolio-item">
+                
+            </div>
+            <div id="map1" class="col-md-4 portfolio-item" style="height: 400px;">
+
+                <p>
+                <input type="number" class="form-control" id="s3" step="0.000000000000005" name="qq1"/>Latitude<br>   
+                </p>
+                <p>
+                <input type="number" class="form-control" id="s4" step="0.000000000000005" name="qqq2"/>Longitude<br>
+                </p>
+
+                <input type="submit" class="btn btn-primary" value="SUBMIT" id="sub1" onclick="mapskillz2(document.getElementById('s3').value,document.getElementById('s4').value)"/><br>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+
+            
+
+        <!-- /.row -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; KDU CS INTAKE 31</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <script type="text/javascript">
+            var lati=[];
+            var longi=[]; 
+            var i=0;
+            var lati1=[];
+            var longi1=[]; 
+            var i1=0;
+  function mapskillz1(ll1,ll2){
+    var l1=ll1;
+    var l2=ll2;
+    //var lati=[];
+    //var longi=[];
+    while(i<356){
+      lati.push(l1);
+      longi.push(l2);
+      i++;
+      break;
+    }
+
+if(i==356){   
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(41.92, -87.75),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, j;
+
+    for (j = 0; j < 356; j++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parseFloat(lati[j]), parseFloat(longi[j])),
+        map: map
+      });
+
+     /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));*/
+    }
+  }
+  }
+  function mapskillz2(ll1,ll2){
+    var l1=ll1;
+    var l2=ll2;
+    //var lati=[];
+    ///var longi=[];
+    while(i1<356){
+      lati1.push(l1);
+      longi1.push(l2);
+      i1++;
+      break;
+    }
+
+if(i1==356){
+
+
+  
+      
+    var map = new google.maps.Map(document.getElementById('map1'), {
+      zoom: 10,
+      center: new google.maps.LatLng(41.92, -87.75),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, j;
+
+    for (j = 0; j < 356; j++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parseFloat(lati1[j]), parseFloat(longi1[j])),
+        map: map
+      });
+
+     /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));*/
+    }
+  }
+  }
+  </script>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
